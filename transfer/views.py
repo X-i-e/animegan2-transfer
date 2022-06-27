@@ -29,7 +29,7 @@ def upload_handle(request):
     # 1.获取上传文件的处理对象
     #     <input type = "file" name = "picture"> <br/>
     # pic: Img
-    pic = request.FILES["picture"]
+    pic = request.FILES.get("picture")
     model = request.POST.get("style")
 
     # 2.输入、输出以及模型选择
