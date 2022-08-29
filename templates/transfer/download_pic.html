@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table width="300px" border="1" cellspacing="0">
+        <tr>
+            <th>Raw Picture</th>
+            <th>Processed Picture</th>
+            <th>Operation</th>
+        </tr>
+        <tr>
+            <td><img style="width: 500px;" src="/media/transfer/input/{{ pic }}"></td>
+            <td><img style="width: 500px;" src="/media/transfer/output/{{ pic }}"></td>
+            <td><a href="/transfer/download/?photo={{ pic }}">download</a></td>
+        </tr>
+    </table>
+</body>
+</html>
