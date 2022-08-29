@@ -109,11 +109,16 @@ def load_image(image_path, x32):
     #     w, h = img.size
     #     img = img.resize((to_32s(w), to_32s(h)))
     if x32:
-        base_width = 1000
-        ratio = (base_width / float(img.size[0]))
-        hsize = int((float(img.size[1]) * float(ratio)))
-        img = img.resize((base_width, hsize), Image.ANTIALIAS)
-
+        if img.size[0] > img.size[1]:
+            base_width = 1000
+            ratio = (base_width / float(img.size[0]))
+            hsize = int((float(img.size[1]) * float(ratio)))
+            img = img.resize((base_width, hsize), Image.ANTIALIAS)
+        else:
+            base_length = 1000
+            ratio = (base_length / float(img.size[1]))
+            wsize = int((float(img.size[0]) * float(ratio)))
+            img = img.resize((wsize, base_length), Image.ANTIALIAS)
     return img
 
 
