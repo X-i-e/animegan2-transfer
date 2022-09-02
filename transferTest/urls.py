@@ -24,12 +24,12 @@ from transfer import views
 # from django.conf.urls.static import static
 
 urlpatterns = [
-    path('transfer/admin/', admin.site.urls),
-    url(r'^transfer/', include('transfer.urls')),
+    path('admin/', admin.site.urls),
+    url(r'^api/', include('transfer.urls')),
     url(r'^media/(?P<path>.*)$', static.serve,
         {'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', static.serve,
         {'document_root': settings.STATIC_ROOT}, name='static')
 ]
 
-handler500 = "transfer.views.error_500"
+# handler500 = "transfer.views.error_500"

@@ -12,3 +12,5 @@ class ProcessedPic(models.Model):
     objects = models.Manager()
     pro_pic = models.ImageField(upload_to='transfer/output')
 
+
+
