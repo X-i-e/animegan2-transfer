@@ -30,7 +30,7 @@ class UploadImageViewSet(APIView):
 
     def post(self, request, *args, **kwargs):
         data1 = {
-            'raw_pic': request.data.get('raw_pic'),
+            'raw_pic': request.data.get('image'),
             'style': request.data.get('style'),
         }
 
