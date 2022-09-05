@@ -125,7 +125,7 @@ def upload_handle(pic, model):
         return new_name, err
     # 重构
     raw_image = Image.open(os.path.join(input_dir, new_name)).convert("RGB")
-    image = load_image(os.path.join(input_dir, new_name), raw_image.size[0] > 1000)
+    image = load_image(os.path.join(input_dir, new_name), raw_image.size[0] > 750)
 
     # 图片处理（core）
     with torch.no_grad():
@@ -162,11 +162,16 @@ def load_image(image_path, x32):
     #
     #     w, h = img.size
     #     img = img.resize((to_32s(w), to_32s(h)))
-    if x32:
-        base_width = 1000
+    if img.size[0] > img.size[1]:
+        base_width = 750
         ratio = (base_width / float(img.size[0]))
         hsize = int((float(img.size[1]) * float(ratio)))
         img = img.resize((base_width, hsize), Image.ANTIALIAS)
+    else:
+        base_length = 750
+        ratio = (base_length / float(img.size[1]))
+        wsize = int((float(img.size[0]) * float(ratio)))
+        img = img.resize((wsize, base_length), Image.ANTIALIAS)
 
     return img
 
